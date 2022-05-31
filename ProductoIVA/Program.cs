@@ -128,8 +128,12 @@ namespace ProductoIVA
                 switch (opcion_menu)
                 {
                     case 1:
-                        
-                        (string nombre_articulo, double precio_inicial, double monto_iva, double monto_descuento,double precio_final) =  calculaPrecio(menu_productos());
+                        int opcion_producto = menu_productos();
+                        (string nombre_articulo, double precio_inicial, double monto_iva, double monto_descuento,double precio_final) =  calculaPrecio(opcion_producto);
+                        if(opcion_producto > productosTienda.Length)
+                        {
+                            nombre_articulo = "Producto no existe.";
+                        }
                         muestra_precios(nombre_articulo,precio_inicial, monto_iva, monto_descuento, precio_final);
                         Console.WriteLine("Presione cualquier tecla para volver al menú principal.");
                         Console.ReadKey();
